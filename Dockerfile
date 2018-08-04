@@ -9,8 +9,8 @@ RUN \
   apt-get -q --assume-no update && \
   apt-get install -qy unifi
 
-VOLUME /usr/lib/unifi/data
-VOLUME /usr/lib/unifi/logs
+# VOLUME /usr/lib/unifi/data
+# VOLUME /usr/lib/unifi/logs
 
 # Expose ports
 EXPOSE 8080 8443 8880 8843
