@@ -3,7 +3,11 @@ FROM ubuntu:16.04
 
 MAINTAINER code@brosy.com
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV BASEDIR=/usr/lib/unifi \
+    DATADIR=/unifi/data \
+    LOGDIR=/unifi/log \
+    CERTDIR=/unifi/cert \
+    DEBIAN_FRONTEND=noninteractive
 
 # add unifi repository
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
@@ -22,7 +26,8 @@ RUN set -ex \
     ' \
     && apt-get update \
     && apt-get -y install openjdk-8-jre-headless \
-    && apt-get -y install mongodb-org-server jsvc binutils curl \
+#    && apt-get -y install mongodb-org-server jsvc binutils curl \
+    && apt-get -y install mongodb-server jsvc binutils curl \
     && apt-get -y install unifi
     
 VOLUME ["/var/lib/unifi"]
