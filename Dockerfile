@@ -10,6 +10,22 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
 #  apt-get -q --assume-no update && \
 #  apt-get install -qy unifi
 
+RUN \
+   apt install binutils, && \
+   coreutils, && \
+   adduser, && \
+   libcap2, && \
+   curl && \
+#   mongodb-server (>= 2.4.10) | mongodb-10gen (>= 2.4.14) | mongodb-org-server (>= 2.6.0), && \
+#   mongodb-server (<< 1:3.6.0) | mongodb-10gen (<< 3.6.0) | mongodb-org-server (<< 3.6.0), && \
+   java8-runtime-headless, && \
+   jsvc
+
+
+   
+   
+
+
 # VOLUME /usr/lib/unifi/data
 # VOLUME /usr/lib/unifi/logs
 
