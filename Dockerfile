@@ -10,7 +10,7 @@ ENV BASEDIR=/usr/lib/unifi \
   DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install \
+    apt-get -y install \
     apt-transport-https \
     ca-certificates \
     curl \
