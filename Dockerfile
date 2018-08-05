@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:xenial
+FROM ubuntu:16.04
 
 MAINTAINER code@brosy.com
 
