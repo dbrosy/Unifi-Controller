@@ -11,6 +11,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
 #  apt-get install -qy unifi
 
 RUN \
+   apt update && \
    apt install binutils, && \
    coreutils, && \
    adduser, && \
