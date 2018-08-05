@@ -13,6 +13,10 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
 
 
 RUN set -ex \
+    && fetchDeps=' \
+        ca-certificates \
+        wget \
+    ' \
     && apt-get update \
     && apt-get -y install openjdk-8-jre-headless \
     && apt-get -y install mongodb-org-server jsvc binutils curl \
