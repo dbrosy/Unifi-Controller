@@ -19,7 +19,7 @@ RUN \
     libcap2 \
     curl \
     mongodb-server \
-    java8-runtime-headless \
+    openjdk-8-jre-headless \
     jsvc
 
 # VOLUME /usr/lib/unifi/data
