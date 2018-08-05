@@ -3,26 +3,33 @@ FROM ubuntu:xenial
 
 MAINTAINER code@brosy.com
 
-RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee /etc/apt/sources.list.d/100-ubnt-unifi.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50 
-# RUN wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ubnt.com/unifi/unifi-repo.gpg
-#RUN \
-#  apt-get -q --assume-no update && \
-#  apt-get install -qy unifi
+ENV BASEDIR=/usr/lib/unifi \
+  DATADIR=/var/lib/unifi \
+  RUNDIR=/var/run/unifi \
+  LOGDIR=/var/log/unifi \
+  DEBIAN_FRONTEND noninteractive
 
-ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update \
+    && apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
 
-RUN \
-  apt-get update && \ 
-  apt-get -y install \
+
+RUN apt-get -y install \
     binutils \
     coreutils \
     adduser \
     libcap2 \
     curl \
-    mongodb-server \
     openjdk-8-jre-headless \
     jsvc
+
+RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee /etc/apt/sources.list.d/100-ubnt-unifi.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50 
+
+
 
 # VOLUME /usr/lib/unifi/data
 # VOLUME /usr/lib/unifi/logs
