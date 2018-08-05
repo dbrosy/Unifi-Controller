@@ -10,6 +10,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
 #  apt-get -q --assume-no update && \
 #  apt-get install -qy unifi
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
   apt-get update && \ 
   apt-get -y install \
