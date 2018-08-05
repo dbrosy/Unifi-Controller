@@ -12,10 +12,11 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
 # add mongodb repository
 
 
-RUN apt-get update && \
-    apt-get -y install openjdk-8-jre-headless && \
-    apt-get -y install mongodb-org-server jsvc binutils curl && \
-    apt-get -y install unifi
+RUN set -ex \
+    && apt-get update \
+    && apt-get -y install openjdk-8-jre-headless \
+    && apt-get -y install mongodb-org-server jsvc binutils curl \
+    && apt-get -y install unifi
     
 VOLUME ["/var/lib/unifi"]
 
