@@ -14,7 +14,7 @@ RUN \
 # VOLUME /usr/lib/unifi/logs
 
 # Expose ports
-EXPOSE 8080 8443 8880 8843
+EXPOSE 3478/udp 6789/tcp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 10001/udp
 
 # Define working directory.
 WORKDIR /usr/lib/unifi
