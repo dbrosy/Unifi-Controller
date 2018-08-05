@@ -7,7 +7,7 @@ ENV BASEDIR=/usr/lib/unifi \
   DATADIR=/var/lib/unifi \
   RUNDIR=/var/run/unifi \
   LOGDIR=/var/log/unifi \
-  DEBIAN_FRONTEND noninteractive
+  DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install \
