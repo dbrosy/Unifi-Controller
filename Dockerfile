@@ -9,7 +9,8 @@ ENV BASEDIR=/usr/lib/unifi \
   LOGDIR=/var/log/unifi \
   DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get install \
+RUN apt-get update && \
+    apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
