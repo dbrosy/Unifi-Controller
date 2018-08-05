@@ -30,7 +30,8 @@ RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50 
 
 RUN apt-get update
-RUN apt-get -y install openjdk-8-jre-headless
+RUN apt-get install gnupg
+# RUN apt-get -y install openjdk-8-jre-headless
 
 RUN apt-get -y install unifi
 
