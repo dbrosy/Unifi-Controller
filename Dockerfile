@@ -25,8 +25,11 @@ MAINTAINER code@brosy.com
 #    curl \
 #    openjdk-8-jre-headless \
 #    jsvc
+
+# required for debian
 RUN apt-get update
 RUN apt-get -y install gnupg
+RUN apt-get -y install procps
 
 RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian oldstable ubiquiti' | tee /etc/apt/sources.list.d/100-ubnt-unifi.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50 
