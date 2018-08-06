@@ -39,7 +39,7 @@ EXPOSE 3478/udp 6789/tcp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 10001/udp
 
 
 # Define working directory.
-WORKDIR /var/lib/unifi
+WORKDIR /usr/lib/unifi
 
 ENTRYPOINT ["/usr/bin/java", "-Xmx1024M", "-jar", "/usr/lib/unifi/lib/ace.jar"]
 
