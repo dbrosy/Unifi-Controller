@@ -32,11 +32,10 @@ RUN set -ex \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN set -ex \
-    && mkdir -p ${DATADIR} ${LOGDIR} \
-    && ln -s ${DATADIR} ${BASEDIR}/data \
-    && ln -s ${RUNDIR} ${BASEDIR}/run \
-    && ln -s ${LOGDIR} ${BASEDIR}/logs
+RUN mkdir -p ${DATADIR} ${LOGDIR}
+RUN ln -s ${DATADIR} ${BASEDIR}/data
+RUN ln -s ${RUNDIR} ${BASEDIR}/run
+RUN ln -s ${LOGDIR} ${BASEDIR}/logs
 
 VOLUME ["/var/lib/unifi"]
 
