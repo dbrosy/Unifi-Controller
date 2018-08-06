@@ -2,11 +2,10 @@
 FROM ubuntu:16.04
 
 MAINTAINER code@brosy.com
-ENV NAME=unifi \
-    BASEDIR=/usr/lib/${NAME} \
-    DATADIR=/var/lib/${NAME} \
-    LOGDIR=/var/log/${NAME} \
-    RUNDIR=/var/run/${NAME} \
+ENV BASEDIR=/usr/lib/unifi \
+    DATADIR=/var/lib/unifi \
+    LOGDIR=/var/log/unifi \
+    RUNDIR=/var/run/unifi \
     DEBIAN_FRONTEND=noninteractive
     
 #ENV BASEDIR=/usr/lib/unifi \
