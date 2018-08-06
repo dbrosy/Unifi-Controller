@@ -26,11 +26,13 @@ RUN set -ex \
     ' \
     && apt-get update \
     && apt-get -y install openjdk-8-jre-headless \
-#    && apt-get -y install mongodb-org-server jsvc binutils curl \
+    && apt-get -y install mongodb-org-server jsvc binutils curl \
     && apt-get -y install mongodb-server jsvc binutils curl \
-    && apt-get -y install unifi
+    && apt-get -y install unifi \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
-VOLUME ["/var/lib/unifi"]
+VOLUME ["/usr/lib/unifi"]
 
 # Expose ports
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 10001/udp
