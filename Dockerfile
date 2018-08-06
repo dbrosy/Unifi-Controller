@@ -2,13 +2,19 @@
 FROM ubuntu:16.04
 
 MAINTAINER code@brosy.com
-
-ENV BASEDIR=/usr/lib/unifi \
-    DATADIR=/unifi/data \
-    LOGDIR=/unifi/log \
-    CERTDIR=/unifi/cert \
-    RUNDIR=/var/run/unifi \
+ENV NAME=unifi \
+    BASEDIR=/usr/lib/${NAME} \
+    DATADIR=/var/lib/${NAME} \
+    LOGDIR=/var/log/${NAME} \
+    RUNDIR=/var/run/${NAME} \
     DEBIAN_FRONTEND=noninteractive
+    
+#ENV BASEDIR=/usr/lib/unifi \
+#    DATADIR=/unifi/data \
+#    LOGDIR=/unifi/log \
+#    CERTDIR=/unifi/cert \
+#    RUNDIR=/var/run/unifi \
+#    DEBIAN_FRONTEND=noninteractive
 
 # add unifi repository
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
@@ -20,9 +26,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14
 RUN echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
 RUN mkdir -p ${DATADIR} ${LOGDIR}
-#RUN ln -s ${DATADIR} ${BASEDIR}/data
-#RUN ln -s ${RUNDIR} ${BASEDIR}/run
-#RUN ln -s ${LOGDIR} ${BASEDIR}/logs
+RUN ln -s ${DATADIR} ${BASEDIR}/data
+RUN ln -s ${RUNDIR} ${BASEDIR}/run
+RUN ln -s ${LOGDIR} ${BASEDIR}/logs
 
 RUN set -ex \
     && fetchDeps=' \
