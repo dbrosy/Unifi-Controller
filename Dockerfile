@@ -25,10 +25,8 @@ RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 RUN echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
-RUN mkdir -p ${DATADIR} ${LOGDIR}
-RUN ln -s ${DATADIR} ${BASEDIR}/data
-RUN ln -s ${RUNDIR} ${BASEDIR}/run
-RUN ln -s ${LOGDIR} ${BASEDIR}/logs
+#RUN mkdir -p ${DATADIR} ${LOGDIR}
+
 
 RUN set -ex \
     && fetchDeps=' \
@@ -42,6 +40,10 @@ RUN set -ex \
     && apt-get -y install unifi \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN ln -s ${DATADIR} ${BASEDIR}/data
+RUN ln -s ${RUNDIR} ${BASEDIR}/run
+RUN ln -s ${LOGDIR} ${BASEDIR}/logs
 
 VOLUME ["/unifi", "${RUNDIR}"]
 
