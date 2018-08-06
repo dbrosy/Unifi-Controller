@@ -31,10 +31,16 @@ RUN set -ex \
     && apt-get -y install unifi \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-    
-VOLUME ["/usr/lib/unifi"]
 
-# Expose ports
+RUN set -ex \
+    && mkdir -p ${DATADIR} ${LOGDIR} \
+    && ln -s ${DATADIR} ${BASEDIR}/data \
+    && ln -s ${RUNDIR} ${BASEDIR}/run \
+    && ln -s ${LOGDIR} ${BASEDIR}/logs
+
+VOLUME ["/var/lib/unifi"]
+
+# Expose port
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 10001/udp
 
 
