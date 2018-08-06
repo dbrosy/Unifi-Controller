@@ -44,7 +44,7 @@ RUN ln -s ${DATADIR} ${BASEDIR}/data
 RUN ln -s ${RUNDIR} ${BASEDIR}/run
 RUN ln -s ${LOGDIR} ${BASEDIR}/logs
 
-VOLUME ["/unifi", "${RUNDIR}"]
+VOLUME ["${RUNDIR}"]
 
 # Expose port
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 10001/udp
