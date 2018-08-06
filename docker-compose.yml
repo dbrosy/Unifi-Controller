@@ -3,6 +3,9 @@ services:
   unifi-controller:
     build: .
     image: dbrosy/unifi-controller
+    networks:
+    - unifi
+    restart: always
     ports:
      - "8080:8080"
      - "8443:8443"
@@ -10,3 +13,14 @@ services:
      - "3478:3478/udp"
      - "6789:6789"
     container_name: unifi
+    volumes:
+      - data:/var/lib/unifi
+      - log:/var/log/unifi
+      - run:/var/run/unifi
+volumes:
+ data:
+ log:
+ run:
+
+networks:
+  unifi:
